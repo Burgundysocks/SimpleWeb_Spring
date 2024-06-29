@@ -15,6 +15,7 @@ class ItemRepositoryTest {
     @AfterEach
     void afterEach(){
         itemRepository.clearStore();
+        //테스트 메소드를 돌때마다 초기화를 시켜주지 않으면 안됩니다
     }
 
     @Test

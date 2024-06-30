@@ -11,33 +11,28 @@ import java.util.Map;
 //컴포넌트 스캔의 대상
 public class ItemRepository {
 
-    private static final Map<Long, Item> store = new HashMap<>();//static
-    private static long sequence = 0L; //static
+
+    private static final Map<Long, Item> store = new HashMap<>(); //static 사용
+    private static long sequence = 0L; //static 사용
 
     public Item save(Item item) {
         item.setId(++sequence);
         store.put(item.getId(), item);
         return item;
     }
-
     public Item findById(Long id) {
         return store.get(id);
     }
-
-    public List<Item> findAll(){
+    public List<Item> findAll() {
         return new ArrayList<>(store.values());
     }
-
     public void update(Long itemId, Item updateParam) {
-        //업데이트용 객체를 하나 더 만드는게 낫다...?
-       Item findItem = findById(itemId);
-       findItem.setItemName(updateParam.getItemName());
-       findItem.setPrice(updateParam.getPrice());
-       findItem.setQuantity(updateParam.getQuantity());
-
+        Item findItem = findById(itemId);
+        findItem.setItemName(updateParam.getItemName());
+        findItem.setPrice(updateParam.getPrice());
+        findItem.setQuantity(updateParam.getQuantity());
     }
-    public void clearStore(){
+    public void clearStore() {
         store.clear();
     }
-
 }
